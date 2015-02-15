@@ -20,8 +20,8 @@ makeCacheMatrix <- function(x = matrix()) {
         ## define the get function.  just return the matrix (non-inverted) to the caller.
         get <- function() x
         
-        ## define setinverse.  the caller has already calculated the inverse of x, so all 
-        ## that needs doing is to save the value
+        ## define setinverse.  the caller has already calculated the inverse of x and is 
+		## giving it to us, so all that needs doing is to save the value
         setinverse <- function(inverse) i <<- inverse
         
         ## define getinverse.  the caller wants to see what is cached for the inverse.
@@ -56,7 +56,7 @@ cacheSolve <- function(x, ...) {
         data <- x$get()
         
         ## now, invert it.
-        i <- solve(x)
+        i <- solve(data)
         
         ## don't forget to cache that inverse you worked so hard for.
         x$setinverse(i)
